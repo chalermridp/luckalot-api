@@ -10,9 +10,12 @@ export class ResultsService {
     return null;
   }
 
-  getByDateAndProvider(date: string, provider: string): Result[] {
+  async getByDateAndProvider(
+    date: string,
+    provider: string,
+  ): Promise<Result[]> {
     if (provider.toLowerCase() === ResultProvider.SANOOK.toLowerCase()) {
-      return this.sanookService.getByDate(date);
+      return await this.sanookService.getByDate(date);
     } else {
       throw new NotImplementedException();
     }

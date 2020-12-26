@@ -8,16 +8,14 @@ export class ResultsController {
 
   @Get('/:date')
   getByDate(@Param('date') date: string): Result[] {
-    console.log('getByDate');
     return this.resultsService.getByDate(date);
   }
 
   @Get('/:date/:provider')
-  getByProviderAndDate(
+  async getByProviderAndDate(
     @Param('date') date: string,
     @Param('provider') provider: string,
-  ): Result[] {
-    console.log('getByProviderAndDate');
-    return this.resultsService.getByDateAndProvider(date, provider);
+  ): Promise<Result[]> {
+    return await this.resultsService.getByDateAndProvider(date, provider);
   }
 }
