@@ -7,6 +7,7 @@ export class ResultsService {
   constructor(private sanookService: SanookService) {}
 
   getByDate(date: string): Result[] {
+    console.log(date);
     return null;
   }
 
