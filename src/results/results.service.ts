@@ -1,10 +1,10 @@
 import { Injectable, NotImplementedException } from '@nestjs/common';
 import { Result, ResultProvider } from './results.model';
-import { SanookService } from './sanook/sanook.service';
+import { ResultsSanookService } from './sanook/results.sanook.service';
 
 @Injectable()
 export class ResultsService {
-  constructor(private sanookService: SanookService) {}
+  constructor(private resultSanookService: ResultsSanookService) {}
 
   getByDate(date: string): Result[] {
     console.log(date);
@@ -16,7 +16,7 @@ export class ResultsService {
     provider: string,
   ): Promise<Result[]> {
     if (provider.toLowerCase() === ResultProvider.SANOOK.toLowerCase()) {
-      return await this.sanookService.getByDate(date);
+      return await this.resultSanookService.getByDate(date);
     } else {
       throw new NotImplementedException();
     }
