@@ -10,12 +10,4 @@ export class ResultsController {
   getByDate(@Param('date') date: string): Result[] {
     return this.resultsService.getByDate(date);
   }
-
-  @Get('/:date/:provider')
-  async getByProviderAndDate(
-    @Param('date') date: string,
-    @Param('provider') provider: string,
-  ): Promise<Result[]> {
-    return await this.resultsService.getByDateAndProvider(date, provider);
-  }
 }
