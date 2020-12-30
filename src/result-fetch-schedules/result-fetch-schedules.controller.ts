@@ -23,7 +23,6 @@ export class ResultFetchSchedulesController {
     @Param('date') date: string,
     @Body() updateDto: UpdateResultFetchScheduleDto,
   ): Promise<ResultFetchSchedule> {
-    console.log(updateDto);
     return this.resultFetchScheduleService.update(date, updateDto);
   }
 }
