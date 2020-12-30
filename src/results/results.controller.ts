@@ -1,5 +1,6 @@
-import { Controller, Get, Param } from '@nestjs/common';
-import { Result } from './results.model';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { CreateResultDto } from './dto/create-result-dto';
+import { Result } from './results.entity';
 import { ResultsService } from './results.service';
 
 @Controller('results')
@@ -7,7 +8,23 @@ export class ResultsController {
   constructor(private resultsService: ResultsService) {}
 
   @Get('/:date')
-  getByDate(@Param('date') date: string): Result[] {
+  getByDate(@Param('date') date: string): Promise<Result[]> {
     return this.resultsService.getByDate(date);
+  }
+
+  @Post('/:date')
+  create(
+    @Param('date') date: string,
+    @Body() createResultDto: CreateResultDto,
+  ): Promise<Result> {
+    return this.resultsService.create(date, createResultDto);
+  }
+
+  @Post('/:date/bulk')
+  createBulk(
+    @Param('date') date: string,
+    @Body() createResultDtoList: CreateResultDto[],
+  ): Promise<Result[]> {
+    return this.resultsService.createBulk(date, createResultDtoList);
   }
 }

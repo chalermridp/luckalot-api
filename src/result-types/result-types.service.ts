@@ -10,7 +10,7 @@ export class ResultTypesService {
     private resultTypesRepository: ResultTypeRepository,
   ) {}
 
-  async getAll(): Promise<ResultType[]> {
-    return await this.resultTypesRepository.find();
+  getAll(): Promise<ResultType[]> {
+    return this.resultTypesRepository.find();
   }
 }
