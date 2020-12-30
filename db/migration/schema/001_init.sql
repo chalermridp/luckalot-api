@@ -26,3 +26,35 @@ create table result
 	updated_at timestamp null,
 	primary key(date, value)
 );
+
+create table result_date
+(
+	date date not null primary key,
+	is_active boolean not null default false,
+	created_by varchar(50) not null,
+	created_at timestamp not null default current_timestamp,
+	updated_by varchar(50) null,
+	updated_at timestamp null
+);
+
+create table result_fetch_schedule
+(
+	date date not null primary key,
+	is_completed boolean not null default false,
+	is_active boolean not null default true,
+	created_by varchar(50) not null,
+	created_at timestamp not null default current_timestamp,
+	updated_by varchar(50) null,
+	updated_at timestamp null
+);
+
+create table result_fetch_log
+(
+	date date not null,
+	timestamp timestamp not null,
+	is_success boolean not null default false,
+	error_information varchar(500) null default false,
+	created_by varchar(50) not null,
+	created_at timestamp not null default current_timestamp,
+	primary key(date, timestamp)
+);
