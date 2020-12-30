@@ -15,16 +15,16 @@ export class ResultsController {
   @Post('/:date')
   create(
     @Param('date') date: string,
-    @Body() createResultDto: CreateResultDto,
+    @Body() createDto: CreateResultDto,
   ): Promise<Result> {
-    return this.resultsService.create(date, createResultDto);
+    return this.resultsService.create(date, createDto);
   }
 
   @Post('/:date/bulk')
   createBulk(
     @Param('date') date: string,
-    @Body() createResultDtoList: CreateResultDto[],
+    @Body() createDtoList: CreateResultDto[],
   ): Promise<Result[]> {
-    return this.resultsService.createBulk(date, createResultDtoList);
+    return this.resultsService.createBulk(date, createDtoList);
   }
 }

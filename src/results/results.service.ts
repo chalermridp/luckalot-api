@@ -15,19 +15,16 @@ export class ResultsService {
     return this.resultRepository.getByDate(new Date(date));
   }
 
-  async create(
-    date: string,
-    createResultDto: CreateResultDto,
-  ): Promise<Result> {
-    const result = this.transformCreateDtoToEntity(date, createResultDto);
+  async create(date: string, createDto: CreateResultDto): Promise<Result> {
+    const result = this.transformCreateDtoToEntity(date, createDto);
     return await this.resultRepository.save(result);
   }
 
   async createBulk(
     date: string,
-    createResultDtoList: CreateResultDto[],
+    createDtoList: CreateResultDto[],
   ): Promise<Result[]> {
-    const results = createResultDtoList.map((createResultDto) => {
+    const results = createDtoList.map((createResultDto) => {
       return this.transformCreateDtoToEntity(date, createResultDto);
     });
     return await this.resultRepository.save(results);
@@ -35,9 +32,9 @@ export class ResultsService {
 
   private transformCreateDtoToEntity(
     date: string,
-    createResultDto: CreateResultDto,
+    createDto: CreateResultDto,
   ): Result {
-    const { resultTypeCode, value, createdBy } = createResultDto;
+    const { resultTypeCode, value, createdBy } = createDto;
     const result = new Result();
     result.date = new Date(date);
     result.resultTypeCode = resultTypeCode;
