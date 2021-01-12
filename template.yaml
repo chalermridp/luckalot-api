@@ -11,6 +11,9 @@ Parameters:
     Default: dev
     AllowedValues: [dev, ppe, prod]
     ConstraintDescription: must specify dev, ppe or prod
+  InfrastructureStackName:
+    Type: String
+    Default: luckalot-infrastructure-stack
 
 Resources:
   ApiGateway:
@@ -35,6 +38,13 @@ Resources:
             Path: /{proxy+}
             Method: any
             RestApiId: !Ref ApiGateway
+      Environment:
+        Variables:
+          DB_HOST: Fn::ImportValue: !Sub "${InfrastructureStackName}-PostgresDbEndpoint"
+          DB_PORT: Fn::ImportValue: !Sub "${InfrastructureStackName}-PostgresDbPort"
+          DB_USERNAME: !Join ['', ['{{resolve:secretsmanager:', !Ref PostgresDbSecret, ':SecretString:username}}' ]]
+          DB_PASSWORD: !Join ['', ['{{resolve:secretsmanager:', !Ref PostgresDbSecret, ':SecretString:password}}' ]]
+          DB_NAME: luckalot
 
 Outputs:
   ApiGatewayId:
