@@ -40,10 +40,24 @@ Resources:
             RestApiId: !Ref ApiGateway
       Environment:
         Variables:
-          DB_HOST: Fn::ImportValue: !Sub "${InfrastructureStackName}-PostgresDbEndpoint"
-          DB_PORT: Fn::ImportValue: !Sub "${InfrastructureStackName}-PostgresDbPort"
-          DB_USERNAME: !Join ['', ['{{resolve:secretsmanager:', !Ref PostgresDbSecret, ':SecretString:username}}' ]]
-          DB_PASSWORD: !Join ['', ['{{resolve:secretsmanager:', !Ref PostgresDbSecret, ':SecretString:password}}' ]]
+          DB_HOST:
+            Fn::ImportValue:
+              !Sub "${InfrastructureStackName}-PostgresDbEndpoint"
+          DB_PORT:
+            Fn::ImportValue:
+              !Sub "${InfrastructureStackName}-PostgresDbPort"
+          DB_USERNAME:
+            Fn::Join:
+              - ''
+              - - '{{resolve:secretsmanager:'
+                - Fn::ImportValue: !Sub "${InfrastructureStackName}-PostgresDbSecret"
+                - ':SecretString:username}}'
+          DB_PASSWORD:
+            Fn::Join:
+              - ''
+              - - '{{resolve:secretsmanager:'
+                - Fn::ImportValue: !Sub "${InfrastructureStackName}-PostgresDbSecret"
+                - ':SecretString:password}}'
           DB_NAME: luckalot
 
 Outputs:
