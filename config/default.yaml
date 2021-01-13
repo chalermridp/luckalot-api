@@ -1,8 +1,0 @@
-server:
-  port: 3001
-
-db:
-  type: 'postgres'
-  port: 5432
-  database: 'luckalot'
-  synchronize: false
