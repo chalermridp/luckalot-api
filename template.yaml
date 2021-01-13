@@ -59,6 +59,15 @@ Resources:
                 - Fn::ImportValue: !Sub "${InfrastructureStackName}-PostgresDbSecret"
                 - ':SecretString:password}}'
           DB_NAME: luckalot
+      VpcConfig:
+        SecurityGroupIds:
+          - Fn::ImportValue:
+              !Sub "${InfrastructureStackName}-MainAppSecurityGroup"
+        SubnetIds:
+          - Fn::ImportValue:
+              !Sub "${InfrastructureStackName}-MainPrivateAppSubnet1"
+          - Fn::ImportValue:
+              !Sub "${InfrastructureStackName}-MainPrivateAppSubnet2"
 
 Outputs:
   ApiGatewayId:
