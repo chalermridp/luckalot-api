@@ -34,16 +34,16 @@ export class ResultsService {
     date: string,
     createDto: CreateResultDto,
   ): Result {
-    const { resultTypeCode, value, createdBy } = createDto;
+    const { result_type_code, value, created_by } = createDto;
     const result = new Result();
     result.date = new Date(date);
-    result.resultTypeCode = resultTypeCode;
+    result.result_type_code = result_type_code;
     result.value = value;
-    result.createdBy = createdBy;
-    result.isActive = true;
-    result.createdAt = new Date();
-    result.updatedBy = null;
-    result.updatedAt = null;
+    result.created_by = created_by;
+    result.is_active = true;
+    result.created_at = new Date();
+    result.updated_at = null;
+    result.updated_by = null;
     return result;
   }
 }

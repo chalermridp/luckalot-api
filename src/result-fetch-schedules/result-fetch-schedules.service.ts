@@ -31,17 +31,17 @@ export class ResultFetchSchedulesService {
       );
     }
 
-    const { isCompleted, isActive, updatedBy } = updateDto;
-    if (typeof isCompleted !== 'undefined') {
-      entity.isCompleted = isCompleted;
+    const { is_completed, is_active, updated_by } = updateDto;
+    if (typeof is_completed !== 'undefined') {
+      entity.is_completed = is_completed;
     }
-    if (typeof isActive !== 'undefined') {
-      entity.isActive = isActive;
+    if (typeof is_active !== 'undefined') {
+      entity.is_active = is_active;
     }
-    if (typeof updatedBy !== 'undefined') {
-      entity.updatedBy = updatedBy;
+    if (typeof updated_by !== 'undefined') {
+      entity.updated_by = updated_by;
     }
-    entity.updatedAt = new Date();
+    entity.updated_at = new Date();
     return await this.resultFetchScheduleRepository.save(entity);
   }
 }

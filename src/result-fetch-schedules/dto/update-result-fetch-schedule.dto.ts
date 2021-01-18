@@ -1,5 +1,5 @@
 export class UpdateResultFetchScheduleDto {
-  isCompleted: boolean;
-  isActive: boolean;
-  updatedBy: string;
+  is_completed: boolean;
+  is_active: boolean;
+  updated_by: string;
 }

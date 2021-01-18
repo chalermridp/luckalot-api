@@ -23,14 +23,14 @@ export class ResultFetchLogsService {
     date: string,
     createDto: CreateResultFetchLogDto,
   ): ResultFetchLog {
-    const { timestamp, isSuccess, errorInformation, createdBy } = createDto;
+    const { timestamp, is_success, error_information, created_by } = createDto;
     const entity = new ResultFetchLog();
     entity.date = new Date(date);
     entity.timestamp = timestamp;
-    entity.isSuccess = isSuccess;
-    entity.errorInformation = errorInformation;
-    entity.createdBy = createdBy;
-    entity.createdAt = new Date();
+    entity.is_success = is_success;
+    entity.error_information = error_information;
+    entity.created_by = created_by;
+    entity.created_at = new Date();
     return entity;
   }
 }

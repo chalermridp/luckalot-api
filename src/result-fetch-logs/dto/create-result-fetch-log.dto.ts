@@ -1,6 +1,6 @@
 export class CreateResultFetchLogDto {
   timestamp: Date;
-  isSuccess: boolean;
-  errorInformation: string;
-  createdBy: string;
+  is_success: boolean;
+  error_information: string;
+  created_by: string;
 }

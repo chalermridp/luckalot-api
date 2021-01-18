@@ -7,17 +7,17 @@ export class ResultFetchScheduleRepository extends Repository<ResultFetchSchedul
   async getFiltered(
     filterDto: FilterResultFetchScheduleDto,
   ): Promise<ResultFetchSchedule[]> {
-    const { date, isCompleted, isActive } = filterDto;
+    const { date, is_completed, is_active } = filterDto;
     const query = this.createQueryBuilder('rfs');
 
     if (typeof date !== 'undefined') {
       query.andWhere('rfs.date = :date', { date });
     }
-    if (typeof isCompleted !== 'undefined') {
-      query.andWhere('rfs.isCompleted = :isCompleted', { isCompleted });
+    if (typeof is_completed !== 'undefined') {
+      query.andWhere('rfs.is_completed = :is_completed', { is_completed });
     }
-    if (typeof isActive !== 'undefined') {
-      query.andWhere('rfs.isActive = :isActive', { isActive });
+    if (typeof is_active !== 'undefined') {
+      query.andWhere('rfs.is_active = :is_active', { is_active });
     }
     return await query.getMany();
   }

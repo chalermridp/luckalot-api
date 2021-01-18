@@ -1,5 +1,5 @@
 export class CreateResultDto {
-  resultTypeCode: string;
+  result_type_code: string;
   value: string;
-  createdBy: string;
+  created_by: string;
 }

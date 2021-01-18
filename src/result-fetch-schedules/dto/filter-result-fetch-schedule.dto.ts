@@ -1,5 +1,5 @@
 export class FilterResultFetchScheduleDto {
   date: Date;
-  isCompleted: boolean;
-  isActive: boolean;
+  is_completed: boolean;
+  is_active: boolean;
 }

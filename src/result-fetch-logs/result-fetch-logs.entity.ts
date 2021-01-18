@@ -7,11 +7,11 @@ export class ResultFetchLog extends BaseEntity {
   @PrimaryColumn()
   timestamp: Date;
   @Column({ name: 'is_success' })
-  isSuccess: boolean;
+  is_success: boolean;
   @Column({ name: 'error_information' })
-  errorInformation: string;
+  error_information: string;
   @Column({ name: 'created_by' })
-  createdBy: string;
+  created_by: string;
   @Column({ name: 'created_at' })
-  createdAt: Date;
+  created_at: Date;
 }

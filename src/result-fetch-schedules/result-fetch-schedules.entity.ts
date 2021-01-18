@@ -5,15 +5,15 @@ export class ResultFetchSchedule extends BaseEntity {
   @PrimaryColumn()
   date: Date;
   @Column({ name: 'is_completed', default: false })
-  isCompleted: boolean;
+  is_completed: boolean;
   @Column({ name: 'is_active', default: true })
-  isActive: boolean;
+  is_active: boolean;
   @Column({ name: 'created_by' })
-  createdBy: string;
+  created_by: string;
   @Column({ name: 'created_at' })
-  createdAt: Date;
+  created_at: Date;
   @Column({ name: 'updated_by' })
-  updatedBy: string;
+  updated_by: string;
   @Column({ name: 'updated_at' })
-  updatedAt: Date;
+  updated_at: Date;
 }
