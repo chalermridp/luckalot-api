@@ -37,7 +37,7 @@ create table result_date
 	updated_at timestamp null
 );
 
-create table result_fetch_schedule
+create table result_import_schedule
 (
 	date date not null primary key,
 	is_completed boolean not null default false,
@@ -48,12 +48,14 @@ create table result_fetch_schedule
 	updated_at timestamp null
 );
 
-create table result_fetch_log
+create table result_import_log
 (
 	date date not null,
 	timestamp timestamp not null,
 	is_success boolean not null default false,
-	error_information varchar(500) null default false,
+	total_records int not null default 0,
+	error_information varchar(500) null default null,
+	remark varchar(500) null default null,
 	created_by varchar(50) not null,
 	created_at timestamp not null default current_timestamp,
 	primary key(date, timestamp)
