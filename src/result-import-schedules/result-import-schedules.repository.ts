@@ -1,12 +1,12 @@
 import { EntityRepository, Repository } from 'typeorm';
-import { FilterResultFetchScheduleDto } from './dto/filter-result-fetch-schedule.dto';
-import { ResultFetchSchedule } from './result-fetch-schedules.entity';
+import { FilterResultImportScheduleDto } from './dto/filter-result-import-schedule.dto';
+import { ResultImportSchedule } from './result-import-schedules.entity';
 
-@EntityRepository(ResultFetchSchedule)
-export class ResultFetchScheduleRepository extends Repository<ResultFetchSchedule> {
+@EntityRepository(ResultImportSchedule)
+export class ResultImportScheduleRepository extends Repository<ResultImportSchedule> {
   async getFiltered(
-    filterDto: FilterResultFetchScheduleDto,
-  ): Promise<ResultFetchSchedule[]> {
+    filterDto: FilterResultImportScheduleDto,
+  ): Promise<ResultImportSchedule[]> {
     const { date, is_completed, is_active } = filterDto;
     const query = this.createQueryBuilder('rfs');
 
@@ -22,7 +22,7 @@ export class ResultFetchScheduleRepository extends Repository<ResultFetchSchedul
     return await query.getMany();
   }
 
-  async getByDate(date: Date): Promise<ResultFetchSchedule> {
+  async getByDate(date: Date): Promise<ResultImportSchedule> {
     const query = this.createQueryBuilder('rfs');
     query.andWhere('rfs.date = :date', { date });
     return await query.getOne();

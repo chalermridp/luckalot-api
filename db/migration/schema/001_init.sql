@@ -1,5 +1,3 @@
-create database luckalot;
-
 create table result_type
 (
 	code varchar(30) primary key,

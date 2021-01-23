@@ -1,7 +1,7 @@
 import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
 
-@Entity({ name: 'result_fetch_schedule' })
-export class ResultFetchSchedule extends BaseEntity {
+@Entity({ name: 'result_import_schedule' })
+export class ResultImportSchedule extends BaseEntity {
   @PrimaryColumn()
   date: Date;
   @Column({ name: 'is_completed', default: false })
