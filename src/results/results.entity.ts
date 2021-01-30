@@ -3,8 +3,10 @@ import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
 @Entity({ name: 'result' })
 export class Result extends BaseEntity {
   @PrimaryColumn()
+  id: number;
+  @Column()
   date: Date;
-  @PrimaryColumn({ name: 'result_type_code' })
+  @Column({ name: 'result_type_code' })
   result_type_code: string;
   @Column()
   value: string;

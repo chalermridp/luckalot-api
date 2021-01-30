@@ -14,6 +14,7 @@ create table result_type
 
 create table result
 (
+	id serial not null primary key,
 	date date not null,
 	result_type_code varchar(30) not null,
 	value varchar(10) not null,
@@ -21,9 +22,10 @@ create table result
 	created_by varchar(50) not null,
 	created_at timestamp not null default current_timestamp,
 	updated_by varchar(50) null,
-	updated_at timestamp null,
-	primary key(date, value)
+	updated_at timestamp null
 );
+
+create index result_idx on result(date, value);
 
 create table result_date
 (
