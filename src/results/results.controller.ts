@@ -1,6 +1,5 @@
 import { Query } from '@nestjs/common';
 import { Body, Controller, Get, Param, Post } from '@nestjs/common';
-import { query } from 'express';
 import { CreateResultDto } from './dto/create-result-dto';
 import { ResultsCheckModel } from './model/results.check.model';
 import { Result } from './results.entity';
