@@ -5,6 +5,7 @@ import { ResultsModule } from './results/results.module';
 import { ResultTypeModule } from './result-types/result-types.module';
 import { ResultImportLogsModule } from './result-fetch-logs/result-import-logs.module';
 import { ResultImportSchedulesModule } from './result-import-schedules/result-import-schedules.module';
+import { ResultDatesModule } from './result-dates/result-dates.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import { ResultImportSchedulesModule } from './result-import-schedules/result-im
     ResultTypeModule,
     ResultImportLogsModule,
     ResultImportSchedulesModule,
+    ResultDatesModule,
   ],
 })
 export class AppModule {}
