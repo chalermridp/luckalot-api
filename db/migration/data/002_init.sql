@@ -1,5 +1,5 @@
 insert into result_import_schedule (date, is_completed, created_by)
-values ('2021-05-01', false, 'db.migration');
+values ('2021-05-02', false, 'db.migration');
 insert into result_import_schedule (date, is_completed, created_by)
 values ('2021-05-16', false, 'db.migration');
 insert into result_import_schedule (date, is_completed, created_by)

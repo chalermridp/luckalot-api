@@ -4,6 +4,8 @@ import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
 export class ResultType extends BaseEntity {
   @PrimaryColumn()
   code: string;
+  @Column()
+  order: number;
   @Column({ name: 'name_th' })
   name_th: string;
   @Column({ name: 'name_en' })

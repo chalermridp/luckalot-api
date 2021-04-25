@@ -1,6 +1,7 @@
 create table result_type
 (
 	code varchar(30) primary key,
+	"order" int not null,
 	name_th varchar(100) not null,
 	name_en varchar(100) null,
 	reward int not null,
