@@ -2,7 +2,7 @@ import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity({ name: 'result_import_schedule' })
 export class ResultImportSchedule extends BaseEntity {
-  @PrimaryColumn()
+  @PrimaryColumn({ type: 'date' })
   date: Date;
   @Column({ name: 'is_completed', default: false })
   is_completed: boolean;

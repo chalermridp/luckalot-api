@@ -2,7 +2,7 @@ import { Entity, BaseEntity, PrimaryColumn, Column } from "typeorm";
 
 @Entity({ name: 'result_date' })
 export class ResultDate extends BaseEntity {
-    @PrimaryColumn()
+    @PrimaryColumn({ type: 'date' })
     date: Date;
     @Column({ name: 'is_active', default: true })
     is_active: boolean;

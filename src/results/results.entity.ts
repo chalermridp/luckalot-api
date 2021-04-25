@@ -4,7 +4,7 @@ import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
 export class Result extends BaseEntity {
   @PrimaryColumn()
   id: number;
-  @Column()
+  @Column({ type: 'date' })
   date: Date;
   @Column({ name: 'result_type_code' })
   result_type_code: string;

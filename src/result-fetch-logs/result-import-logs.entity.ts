@@ -2,7 +2,7 @@ import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity({ name: 'result_import_log' })
 export class ResultImportLog extends BaseEntity {
-  @PrimaryColumn()
+  @PrimaryColumn({ type: 'date' })
   date: Date;
   @PrimaryColumn()
   timestamp: Date;
