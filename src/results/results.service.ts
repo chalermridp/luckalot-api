@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateResultDto } from './dto/create-result-dto';
 import { ResultsCheckModel } from './model/results.check.model';
+import { ResultsViewModel } from './model/results.view.model';
 import { Result } from './results.entity';
 import { ResultRepository } from './results.repository';
 
@@ -10,10 +11,15 @@ export class ResultsService {
   constructor(
     @InjectRepository(ResultRepository)
     private resultRepository: ResultRepository,
-  ) {}
+  ) { }
 
   getByDate(date: string): Promise<Result[]> {
     return this.resultRepository.getByDate(new Date(date));
+  }
+
+  async viewByDate(string: string): Promise<ResultsViewModel> {
+    const data = await this.getByDate(string);
+    return this.transformEntitiesToView(data);
   }
 
   async create(date: string, createDto: CreateResultDto): Promise<Result> {
@@ -45,6 +51,20 @@ export class ResultsService {
     result.created_at = new Date();
     result.updated_at = null;
     result.updated_by = null;
+    return result;
+  }
+
+  private transformEntitiesToView(entities: Result[]) {
+    const result: ResultsViewModel = new ResultsViewModel();
+    result.first = entities.find(i => i.result_type_code === 'first').value;
+    result.nearby_first = entities.filter(i => i.result_type_code === 'nearby_first').sort(i => +i.value).map(i => i.value);
+    result.three_prefix = entities.filter(i => i.result_type_code === 'three_prefix').sort(i => +i.value).map(i => i.value);
+    result.three_suffix = entities.filter(i => i.result_type_code === 'three_suffix').sort(i => +i.value).map(i => i.value);
+    result.two_suffix = entities.find(i => i.result_type_code === 'two_suffix').value;
+    result.second = entities.filter(i => i.result_type_code === 'second').sort(i => +i.value).map(i => i.value);
+    result.third = entities.filter(i => i.result_type_code === 'third').sort(i => +i.value).map(i => i.value);
+    result.fourth = entities.filter(i => i.result_type_code === 'fourth').sort(i => +i.value).map(i => i.value);
+    result.fifth = entities.filter(i => i.result_type_code === 'fifth').sort(i => +i.value).map(i => i.value);
     return result;
   }
 
