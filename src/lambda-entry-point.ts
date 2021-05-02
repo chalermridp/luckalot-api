@@ -1,11 +1,12 @@
 import { Server } from 'http';
-import { NestFactory } from '@nestjs/core';
+import { NestFactory, Reflector } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { Context } from 'aws-lambda';
 import * as serverlessExpress from 'aws-serverless-express';
 import * as express from 'express';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import { LoggingInterceptor } from './common/interceptors/logging.interceptor';
+import { ClassSerializerInterceptor } from '@nestjs/common';
 
 let lambdaProxy: Server;
 
@@ -15,7 +16,10 @@ async function bootstrap() {
     AppModule,
     new ExpressAdapter(expressServer),
   );
-  nestApp.useGlobalInterceptors(new LoggingInterceptor());
+  nestApp.useGlobalInterceptors(
+    new LoggingInterceptor(),
+    new ClassSerializerInterceptor(nestApp.get(Reflector))
+  );
   await nestApp.init();
   return serverlessExpress.createServer(expressServer);
 }

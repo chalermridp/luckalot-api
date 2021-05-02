@@ -1,8 +1,10 @@
+import { Exclude } from 'class-transformer';
 import { BaseEntity, Column, Entity, PrimaryColumn } from 'typeorm';
 
 @Entity({ name: 'result' })
 export class Result extends BaseEntity {
   @PrimaryColumn()
+  @Exclude()
   id: number;
   @Column({ type: 'date' })
   date: Date;
