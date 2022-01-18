@@ -30,3 +30,5 @@ insert into result_import_schedule (date, is_completed, created_by)
 values ('2021-12-01', false, 'db.migration');
 insert into result_import_schedule (date, is_completed, created_by)
 values ('2021-12-16', false, 'db.migration');
+insert into result_import_schedule (date, is_completed, created_by)
+values ('2021-12-31', false, 'db.migration');
